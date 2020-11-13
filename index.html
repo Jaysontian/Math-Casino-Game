@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Colors</h1>
+    <p>Rules go here.</p>
+    <h2>Money: $<span id='coins'></span></h2>
+    <button id='startbtn' onclick='start()'>Play Game</button>
+    <div id='wanted'>
+        <h2>Match</h3>
+        <h3>Win $200</h3>
+        <div class='color' id='0'></div>
+    </div>
+    <div id='spinner'>
+        <div>
+            <div class='color' id='1'></div>
+            <button onclick='spin(1)' id='btn1'>Spin</button>
+        </div>
+        <div>
+            <div class='color' id='2'></div>
+            <button onclick='spin(2)' id='btn2'>Spin</button>
+        </div>
+        <div>
+            <div class='color' id='3'></div>
+            <button onclick='spin(3)' id='btn3'>Spin</button>
+        </div>
+        <h2>=</h2>
+        <div>
+            <div class='color' id='4'></div>
+        </div>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script src="init.js"></script>
+</html>
