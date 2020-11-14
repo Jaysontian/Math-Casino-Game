@@ -31,6 +31,7 @@ const palatte = [
 
 var results = [];
 var correct;
+var correct2;
 var coins = 30;
 
 window.onload = function() {
@@ -45,17 +46,24 @@ function start(){
     $('#coins').text(coins);
     $('#startbtn').attr('disabled',true);
     $('#btn1').attr('disabled',false);
-    $('#1').css('background-color','white');
-    $('#2').css('background-color','white');
-    $('#3').css('background-color','white');
-    $('#4').css('background-color','white');
 
-    var random = Math.floor(Math.random()*7);
+    $('#primary').removeClass('active');
+    $('#secondary').removeClass('active');
+
+    var random = Math.floor(Math.random()*3);
     correct = random;
-    $('#0').css('background-color', palatte[random].hex);
+    $('#primary').css('background-color', palatte[random].hex);
+    random = Math.floor(Math.random()*4) +3;
+    correct2 = random;
+    $('#secondary').css('background-color', palatte[random].hex);
+    $('#1').addClass('active');
+    $('#2').addClass('active');
+    $('#3').addClass('active');
+    $('#4').css('background-color', 'white');
 }
 
 function spin(num){
+    $('#'+num).removeClass('active');
     var random = Math.floor(Math.random()*3);
     $('#'+num).css('background-color', palatte[random].hex);
     results.push(palatte[random].name);
@@ -75,11 +83,19 @@ function spin(num){
 
 function check(){
     var result = output(results);
+    $('#4').removeClass('active');
     $('#4').css('background-color', palatte[result].hex);
     if (result == correct){
-        alert('you got it!');
-    } else {
-        alert('you lost')
+        $('#state').text('You matched the primary color and won $6.');
+        coins += 6;   $('#coins').text(coins);
+    } 
+    if (result == correct2){
+        $('#state').text('You matched the secondary color and won $2.')
+        coins += 2;   $('#coins').text(coins);
+    }
+    
+    if (result != correct && result != correct2) {
+        $('#state').text('You lost brotha')
     };
     clear();
 }
@@ -87,6 +103,7 @@ function check(){
 function clear() {
     results = [];
     correct = '';
+    correct2 = '';
     $('#startbtn').attr('disabled',false);
 }
 
