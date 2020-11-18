@@ -3,61 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rich Painter</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-<body style='display:flex;'>
-    <section id='tab1' style='width:30%;'>
-        <h1>Colors</h1>
-        <p>Rules go here.</p>
-        <h2>Money: $</h2>
-    </section>
-    
-    <section style='width:70%; background-color:rgb(15, 15, 15)'>
-        <h1 id='title'>Colors</h1>
+<body>
+    <div id="snackbar">Some text some message..</div>
+    <h1>Rich Painter</h1>
 
-        <div style="display:flex">
-            <div style='width:30%;'>
-                <h1>Money: <span style='float:right;'>$<span id='coins'>30</span></span></h1>
-                <h1>Bet: <span style='float:right;'>$40</span></h1>
-                <button id='startbtn' class='btn'onclick='start()'>Play Game</button>
+    <div class='stats'>
+        <div class='coins'>
+            <i class='fas fa-coins'></i>
+            <p>$<span id='coins'>30</span></p>
+        </div>
+        <h2>Bet</h2>
+        <div class='betcon'>
+            <button id='minus' onclick='changebet("minus")'>-</button>
+            <p>$<span id='betval'>1</span></p>
+            <button id='plus' onclick='changebet("plus")'>+</button>
+        </div>
+        <button id='playbtn' onclick='start()'>Play</button>
+    </div>
+
+    <div class='wanted'>
+        <h2>Wanted</h2>
+        <div class='wantedcon'>
+            <div>
+                <div class='wantedcolor blue' id='primary'>$6</div>
             </div>
-            <div id='wanted'>
-                <div>
-                    <h3>Win $6</h3>
-                    <div class='color' id='primary'></div>
-                </div>
-                <div>
-                    <h3>Win $2</h3>
-                    <div class='color' id='secondary'></div>
-                </div>
+            <div>
+                <div class='wantedcolor red' id='secondary'>$2</div>
             </div>
         </div>
-       
-        
-        
-        <div id='spinner'>
-            <div>
-                <div class='color active' id='1'><button onclick='spin(1)' id='btn1'>STOP</button></div>
-            </div>
-            <div>
-                <div class='color active' id='2'> <button onclick='spin(2)' id='btn2'>STOP</button></div>
-            
-            </div>
-            <div>
-                <div class='color active' id='3'><button onclick='spin(3)' id='btn3'>STOP</button></div>
-                
-            </div>
-            <h1 style='margin:10px 50px; font-size:50pt;'>→</h1>
-            <div>
-                <div class='color' id='4'></div>
-            </div>
-        </div>
-        <p id='state'></p>
-    </section>
+    </div>
+    <hr>
+
+    <div class='spinners'>
+        <button class='color active' id='1' onclick='spin(1)'>Spin</button>
+        <button class='color active' id='2' onclick='spin(2)'>Spin</button>
+        <button class='color active' id='3' onclick='spin(3)'>Spin</button>
+    </div>
+
+    <div style='margin:auto; width:100%; display:flex;justify-content: space-around;'><button id='4' style='margin-top:50px;' class='color'></button></div>
     
 </body>
 <script src="jquery.js"></script>
-<script src="init.js"></script>
+<script src="script.js"></script>
 </html>
