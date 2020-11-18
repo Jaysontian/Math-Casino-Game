@@ -47,7 +47,7 @@ const betrange = [
 var results = [];
 var correct;
 var correct2;
-var coins = 2;
+var coins = 30;
 var bet = 1;
 var primary = 6;
 var secondary = 2;
