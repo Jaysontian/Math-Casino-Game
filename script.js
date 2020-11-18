@@ -36,19 +36,28 @@ const betrange = [
     },
     {
         primary: 12,
-        secondary: 5,
+        secondary: 4,
     },
     {
-        primary: 20,
-        secondary: 8,
+        primary: 18,
+        secondary: 6,
+    },{
+        primary: 30,
+        secondary: 10,
+    },{
+        primary: 60,
+        secondary: 20,
     }
 ]
+
+const bets = [1,2,3,5,10]
 
 var results = [];
 var correct;
 var correct2;
-var coins = 2;
+var coins = 30;
 var bet = 1;
+var betindex = 0;
 var primary = 6;
 var secondary = 2;
 
@@ -108,24 +117,25 @@ function spin(num){
 }
 
 function changebet(val){
-    if (val == 'minus' && bet > 1){
-        bet -= 1;
+    if (val == 'minus' && betindex > 0){
+        betindex -= 1;
+        bet = bets[betindex];
         $('#betval').text(bet);
-        var index = bet-1;
-        primary = betrange[index].primary;
-        secondary = betrange[index].secondary;
+        primary = betrange[betindex].primary;
+        secondary = betrange[betindex].secondary;
         $('#primary').text('$'+primary);
         $('#secondary').text('$'+secondary);
     }
-    if (val == 'plus' && bet < 3) {
-        bet += 1;
+    if (val == 'plus' && betindex < 4) {
+        betindex += 1;
+        bet = bets[betindex];
         $('#betval').text(bet);
-        var index = bet-1;
-        primary = betrange[index].primary;
-        secondary = betrange[index].secondary;
-        $('#primary').text('$'+primary);
-        $('#secondary').text('$'+secondary);
+        primary = betrange[betindex].primary;
+        secondary = betrange[betindex].secondary;
+        $('#primary').text('$'+ primary);
+        $('#secondary').text('$'+ secondary);
     }
+    console.log(betindex);
 }
 
 function check(){
@@ -145,7 +155,7 @@ function check(){
     
     if (result != correct && result != correct2) {
         $('#state').text('You lost brotha');
-        winsnack(false, "-1");
+        winsnack(false, "-"+bet.toString());
     };
     clear();
 }
